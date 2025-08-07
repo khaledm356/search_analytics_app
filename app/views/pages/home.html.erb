@@ -14,9 +14,11 @@
     };
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("turbo:load", () => {
     const searchBox = document.getElementById("search-box");
     const status = document.getElementById("status");
+
+    if (!searchBox) return;
 
     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
@@ -34,13 +36,15 @@
         if (res.ok) {
           status.textContent = `Saved: "${query}"`;
         } else {
-          status.textContent = `Error`;
+          status.textContent = `Error saving search`;
         }
+      }).catch(() => {
+        status.textContent = `Network error`;
       });
     }, 600);
 
     searchBox.addEventListener("input", (e) => {
-      const query = e.target.value;
+      const query = e.target.value.trim();
       sendSearch(query);
     });
   });
