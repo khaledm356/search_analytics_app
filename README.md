@@ -41,20 +41,14 @@ To run the project locally using Docker:
 
 ```bash
 docker-compose up
-The app will be available at:
 
-arduino
-Copy
-Edit
+The app will be available locally at:
 http://localhost:3000
-Make sure ports 3000 and 6379 (Redis) are free on your local machine.
 
 🧪 Running Tests
 To run the RSpec test suite inside Docker:
 
-bash
-Copy
-Edit
+```bash
 docker-compose run web bundle exec rspec
 📄 Evaluation Criteria Covered
 ✅ Delivered within 48 hours
