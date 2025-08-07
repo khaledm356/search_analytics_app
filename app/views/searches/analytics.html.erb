@@ -1,25 +1,35 @@
-<h1>📊 Your Search Analytics</h1>
+<div class="max-w-2xl mx-auto px-4 py-8">
+  <h1 class="text-3xl font-bold mb-6 flex items-center gap-2">📊 Your Search Analytics</h1>
 
-<h2>🔁 Recent Searches</h2>
-<% if @searches.present? %>
-  <ul>
-    <% @searches.each do |query| %>
-      <li><%= query %></li>
+  <section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">🔁 Recent Searches</h2>
+    <% if @searches.present? %>
+      <ul class="space-y-2 list-disc list-inside text-gray-700">
+        <% @searches.each do |query| %>
+          <li><%= query %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p class="text-gray-500 italic">No searches yet.</p>
     <% end %>
-  </ul>
-<% else %>
-  <p>No searches yet.</p>
-<% end %>
+  </section>
 
-<h2>🔥 Top Searches (By You)</h2>
-<% if @top_searches.present? %>
-  <ul>
-    <% @top_searches.each do |query, count| %>
-      <li><strong><%= query %></strong>: <%= count %> times</li>
+  <section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">🔥 Top Searches (By You)</h2>
+    <% if @top_searches.present? %>
+      <ul class="space-y-2 list-disc list-inside text-gray-700">
+        <% @top_searches.each do |query, count| %>
+          <li><strong class="font-medium text-gray-900"><%= query %></strong>: <%= count %> times</li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p class="text-gray-500 italic">No search frequency data yet.</p>
     <% end %>
-  </ul>
-<% else %>
-  <p>No search frequency data yet.</p>
-<% end %>
+  </section>
 
-<p><a href="/">⬅ Back to Search</a></p>
+  <p>
+    <a href="/" class="inline-block mt-4 text-blue-600 hover:underline">
+      ⬅ Back to Search
+    </a>
+  </p>
+</div>
