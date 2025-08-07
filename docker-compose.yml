@@ -1,0 +1,31 @@
+version: '3.9'
+
+services:
+  web:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails server -b 0.0.0.0 -p 3000"
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+      - redis
+    environment:
+      RAILS_ENV: production
+      SECRET_KEY_BASE: your9a222de223a36ad085f6205c5c57af2bcfa998fc2e32c1a1a65ffa99b7d69ccc9a377e901e7bb59c0b8e7c0ce695af8c3dd2b73e21dc011cceb9136739c1ba9c_generated_key
+      DATABASE_URL: postgres://postgres:password@db:5432/postgres
+      REDIS_URL: redis://redis:6379/0
+
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_PASSWORD: password
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7
+
+volumes:
+  pgdata:
