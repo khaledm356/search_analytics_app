@@ -27,6 +27,7 @@ gem "stimulus-rails"
 gem "jbuilder"
 gem "byebug"
 gem 'rails_12factor', group: :production
+gem "tailwindcss-rails"
 
 # Use Redis adapter to run Action Cable in production
 gem "redis", ">= 4.0.1"
